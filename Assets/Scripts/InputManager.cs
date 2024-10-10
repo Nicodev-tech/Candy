@@ -8,6 +8,7 @@ public class InputManager : MonoBehaviour
     private PlayerInput playerInput;
     private PlayerInput.OnFootActions onFoot;
 
+
     private PlayerMovement motor;
     private PlayerLook look;
     // Start is called before the first frame update
@@ -17,9 +18,11 @@ public class InputManager : MonoBehaviour
         onFoot = playerInput.OnFoot;
         motor = GetComponent<PlayerMovement>();
         look = GetComponent<PlayerLook>();
-        //eventos(callback context)
 
+        //eventos(callback context)
         onFoot.Jump.performed += ctx => motor.Jump();
+        onFoot.Crouch.performed += ctx => motor.Crouch();
+        onFoot.Sprint.performed += ctx => motor.Sprint();
     }
 
     // Update is called once per frame

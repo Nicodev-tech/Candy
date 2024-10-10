@@ -796,7 +796,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfe118b602677ba4fb49d6a7e0617131, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 1396992248}
   speed: 5
+  standingHeight: 0.6
+  crouchedHeight: 0.4
   gravity: -9.8
   jumpHeight: 1.5
 --- !u!114 &1702580173
@@ -824,8 +827,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 1396992248}
-  xSen: 0
-  ySen: 0
+  xSen: 30
+  ySen: 30
 --- !u!1001 &8462259162160884554
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -834,6 +837,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1879399312616603652, guid: 95014e176623ec14cb81cabf01848d4d,
+        type: 3}
+      propertyPath: m_Name
+      value: Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 5661910146981411748, guid: 95014e176623ec14cb81cabf01848d4d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 7499979905486326426, guid: 95014e176623ec14cb81cabf01848d4d,
         type: 3}
       propertyPath: m_BackGroundColor.a
@@ -867,7 +880,7 @@ PrefabInstance:
     - target: {fileID: 8724696295390860253, guid: 95014e176623ec14cb81cabf01848d4d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.9309573
+      value: 0.53
       objectReference: {fileID: 0}
     - target: {fileID: 8724696295390860253, guid: 95014e176623ec14cb81cabf01848d4d,
         type: 3}
@@ -907,6 +920,16 @@ PrefabInstance:
     - target: {fileID: 8724696295390860253, guid: 95014e176623ec14cb81cabf01848d4d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9124978495716124335, guid: 95014e176623ec14cb81cabf01848d4d,
+        type: 3}
+      propertyPath: m_Height
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9124978495716124335, guid: 95014e176623ec14cb81cabf01848d4d,
+        type: 3}
+      propertyPath: m_Center.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
