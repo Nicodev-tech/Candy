@@ -5,10 +5,16 @@ using UnityEngine;
 public class PlayerLook : MonoBehaviour
 {
     public Camera cam;
+    private bool lockedMouse = true;
     private float xRot = 0f;
    
     public float xSen = 30f;
     public float ySen = 30f;
+
+    public void Awake()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
 
     // Start is called before the first frame update
     public void ProcessLook(Vector2 input) 
@@ -23,4 +29,16 @@ public class PlayerLook : MonoBehaviour
         //para que el jugador mire derecha e izquierda
         transform.Rotate(Vector3.up * (mouseX * Time.deltaTime) * xSen);
     }
+    public void LockMouse() 
+    {
+        if (lockedMouse)  {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
+        lockedMouse = !lockedMouse;
+    }
+
 }
