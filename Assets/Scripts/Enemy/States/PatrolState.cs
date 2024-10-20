@@ -15,13 +15,17 @@ public class PatrolState : BaseState
     public override void Perform()
     {
         PatrolCycle();
+        if (enemy.CanSeePlayer()) 
+        {
+            stateMachine.ChangeState(new AttackState());
+        }
     }
     public void PatrolCycle() 
     { 
         if (enemy.Agent.remainingDistance < 0.2f) 
         {
             waitTime += Time.deltaTime;
-            if (waitTime > 3)
+            if (waitTime > enemy.timeBetweenPoints)
             {
                 if (wayPointIndex < enemy.path.wayPoints.Count - 1)
                     wayPointIndex++;

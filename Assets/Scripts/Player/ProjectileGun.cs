@@ -39,6 +39,7 @@ public class ProjectileGunTutorial : MonoBehaviour
     public GameObject muzzleFlash;
     public TextMeshProUGUI ammunitionDisplay;
 
+
     //bug fixing :D
     public bool allowInvoke = true;
 
@@ -47,36 +48,23 @@ public class ProjectileGunTutorial : MonoBehaviour
         //make sure magazine is full
         bulletsLeft = magazineSize;
         readyToShoot = true;
+        
+
     }
 
     private void Update()
     {
-        MyInput();
-
         //Set ammo display, if it exists :D
         if (ammunitionDisplay != null)
             ammunitionDisplay.SetText("Caramelos : "+bulletsLeft);
     }
-    //Moverlo a InputManager
-    private void MyInput()
-    {
-        //Check if allowed to hold down button and take corresponding input
-        if (allowButtonHold) shooting = Input.GetKey(KeyCode.Mouse0);
-        else shooting = Input.GetKeyDown(KeyCode.Mouse0);
 
-        //Shooting
-        if (readyToShoot && shooting && !reloading && bulletsLeft > 0)
+
+    public void Shoot()
+    {
+        if (readyToShoot && !reloading && bulletsLeft > 0)
         {
-            //Set bullets shot to 0
-            bulletsShot = 0;
-
-            Shoot();
-        }
-    }
-
-    private void Shoot()
-    {
-        readyToShoot = false;
+            readyToShoot = false;
 
         //Find the exact hit position using a raycast
         Ray ray = fpsCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0)); //Just a ray through the middle of your current view
@@ -127,6 +115,7 @@ public class ProjectileGunTutorial : MonoBehaviour
         //if more than one bulletsPerTap make sure to repeat shoot function
         if (bulletsShot < bulletsPerTap && bulletsLeft > 0)
             Invoke("Shoot", timeBetweenShots);
+        }
     }
     private void ResetShot()
     {

@@ -11,6 +11,7 @@ public class InputManager : MonoBehaviour
 
     private PlayerMovement motor;
     private PlayerLook look;
+    private ProjectileGunTutorial gun;
     // Start is called before the first frame update
     void Awake()
     {
@@ -18,6 +19,7 @@ public class InputManager : MonoBehaviour
         onFoot = playerInput.OnFoot;
         motor = GetComponent<PlayerMovement>();
         look = GetComponent<PlayerLook>();
+        gun = GetComponent<ProjectileGunTutorial>();
 
         //eventos(callback context)
         onFoot.Jump.performed += ctx => motor.Jump();
@@ -25,6 +27,7 @@ public class InputManager : MonoBehaviour
         onFoot.Sprint.performed += ctx => motor.Sprint();
         onFoot.Sprint.canceled += ctx => motor.Sprint();
         onFoot.Menu.performed += ctx => look.LockMouse();
+        onFoot.Shoot.performed += ctx => gun.Shoot();
     }
 
     // Update is called once per frame
