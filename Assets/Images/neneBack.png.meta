@@ -1,14 +1,8 @@
 fileFormatVersion: 2
-guid: 933e0a15a4f37e54d848ff6a2f4cc5a1
+guid: f5f05de63b09e2643ac0ced8ad9422cd
 TextureImporter:
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:GameObject
-      assembly: UnityEngine.CoreModule
-      name: MeshPrefab
-    second: {fileID: 7543366659740405669, guid: 4ea046871ea7f564a9af9ee75285c038,
-      type: 3}
+  externalObjects: {}
   serializedVersion: 13
   mipmaps:
     mipMapMode: 0
@@ -128,6 +122,6 @@ TextureImporter:
     nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  userData: '{"mode":1,"transparentDetail":0.49300000071525576,"transparentAlphaTolerance":10,"opaqueDetail":0.0010000000474974514,"opaqueAlphaTolerance":10,"opaqueExtrude":0.06400000303983689,"gridSize":44,"gridTolerance":0.3070000112056732,"detectHoles":true,"edgeSmoothing":1.0,"useNonZero":false,"transparentShaderName":"Unlit/Transparent","opaqueShaderName":"Unlit/Texture","thickness":19.1299991607666,"overrideTag":false,"overrideLayer":false,"overrideSortingLayer":false,"tag":"Untagged","layer":0,"sortingLayerId":0,"sortingOrder":0,"isCorrectNormal":false}'
+  userData: 
   assetBundleName: 
   assetBundleVariant: 

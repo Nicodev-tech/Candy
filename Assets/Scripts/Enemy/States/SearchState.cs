@@ -28,7 +28,7 @@ public class SearchState : BaseState
                 {
                     stateMachine.ChangeState(new PatrolState());
                 }
-            if(moveTimer > Random.Range(2f, 3f)) 
+            if(moveTimer > Random.Range(1f, 3f)) 
             {
                 enemy.Agent.SetDestination(enemy.transform.position + (Random.insideUnitSphere * 10));
                 moveTimer = 0f;
