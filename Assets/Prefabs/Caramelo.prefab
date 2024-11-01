@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3987817247985499385}
   m_Layer: 0
   m_Name: Caramelo
-  m_TagString: Untagged
+  m_TagString: Caramelo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeOut: 2
+  carameloSound: {fileID: 8300000, guid: 009bb6be25f64d5438df1d09c9613050, type: 3}
 --- !u!33 &7843398691225537941
 MeshFilter:
   m_ObjectHideFlags: 0

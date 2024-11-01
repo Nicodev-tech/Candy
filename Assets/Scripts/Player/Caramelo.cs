@@ -5,17 +5,26 @@ using UnityEngine;
 public class Caramelo : MonoBehaviour
 {
     public float timeOut = 2f;
+    [SerializeField] private AudioClip carameloSound;
     private float timer;
     private void OnCollisionEnter(Collision collision) 
     { 
-        Transform  hitTransform =collision.transform;
-        if (hitTransform.CompareTag("Nenes")) 
-        {
-            Debug.Log("le pegamos al nene, no para");
-            Destroy(gameObject);
-
-        }
+        Transform  hitTransform = collision.transform;
+        SoundFXManager.Instance.PlaySoundFXClip(carameloSound, collision.transform, 0.3f);
         
+    }
+    void SendAIToCaramelo()
+    {
+        GameObject[] nenes = GameObject.FindGameObjectsWithTag("Nenes");
+        foreach (var nene in nenes)
+        {
+            Enemy Nene = nene.GetComponent<Enemy>();
+            Nene.Caramelo = gameObject;
+        }
+    }
+    private void Awake()
+    {
+        SendAIToCaramelo();
     }
     void Update()
     {

@@ -8,13 +8,20 @@ public class Enemy : MonoBehaviour
     private StateMachine stateMachine;
     private NavMeshAgent agent;
     private GameObject player;
+    private GameObject caramelo;
     private Vector3 lastKnowPos;
+    [SerializeField] public AudioClip[] vistaNeneSound;
+    [SerializeField] public AudioClip[] derrotadoNeneSound;
+
+
 
     public NavMeshAgent Agent { get => agent; }
 
     public GameObject Player { get => player; }
 
     public Vector3 LastKnowPos { get => lastKnowPos; set => lastKnowPos = value; }
+
+    public GameObject Caramelo { get => caramelo; set => caramelo = value; }
     //para debugeo
 
     public Path path;
@@ -72,5 +79,30 @@ public class Enemy : MonoBehaviour
         }
         return false;
    }
+    public bool CanSeeCandy()
+    {
 
+        if (Vector3.Distance(transform.position, caramelo.transform.position) < sightDistance)
+            {
+                Vector3 targetDirection = caramelo.transform.position - transform.position - (Vector3.up * eyeHeight);
+                float angleToCaramelo = Vector3.Angle(targetDirection, transform.forward);
+                if (angleToCaramelo >= -fieldOfView && angleToCaramelo <= fieldOfView)
+                {
+                    Ray ray = new Ray(transform.position + Vector3.up * eyeHeight, targetDirection);
+                    RaycastHit hitInfo = new RaycastHit();
+
+                    if (Physics.Raycast(ray, out hitInfo, sightDistance))
+                    {
+                        if (hitInfo.transform.gameObject == caramelo)
+                        {
+                            Debug.DrawRay(ray.origin, ray.direction * sightDistance);
+                            return true;
+                        }
+
+                    }
+
+                }
+            }
+        return false;
+    }
 }

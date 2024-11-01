@@ -12,7 +12,8 @@ public class PlayerMovement : MonoBehaviour
     public float standingHeight = 0.6f;
     //la cantidad de unidades que baja el caracter
     public float crouchedHeight = 0.4f;
-
+    [SerializeField] private AudioClip footStepSound;
+    float footSoundTimer = 1f;
     float diferenceHeight = 0f;
 
    
@@ -73,6 +74,18 @@ public class PlayerMovement : MonoBehaviour
             playerVelocity.y = -2f;
         }
         controller.Move(playerVelocity * Time.deltaTime);
+        if (moveDirection.magnitude > 0f)
+        {
+            footSoundTimer += Time.deltaTime;
+            if (footSoundTimer >= 0.8f)
+            {
+                
+                SoundFXManager.Instance.PlaySoundFXClip(footStepSound, transform, 0.3f);
+                footSoundTimer = 0f;
+            }
+            footSoundTimer = Mathf.Clamp(footSoundTimer, 0f, 0.8f);
+
+        }
         //Debug.Log(playerVelocity.y);
     }
     public void Jump()  

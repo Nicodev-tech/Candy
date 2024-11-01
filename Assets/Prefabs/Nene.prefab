@@ -219,6 +219,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4068ae736611cfc40b433d6a05059e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vistaNeneSound:
+  - {fileID: 8300000, guid: 44bbd25507108264ea338ccc1b031cd0, type: 3}
+  - {fileID: 8300000, guid: 84b9d38cd26d01c498697ec5e0b9f33f, type: 3}
+  - {fileID: 8300000, guid: 70810d0dcdbf45f498e6a2572851404e, type: 3}
+  derrotadoNeneSound:
+  - {fileID: 8300000, guid: 23d41b423f3044947b3e3c0b0c514ecc, type: 3}
+  - {fileID: 8300000, guid: eba0401419e07af49a17fbc1a385765d, type: 3}
+  - {fileID: 8300000, guid: c0daa088af1bbe44a8e8f5bd04a869d2, type: 3}
   path: {fileID: 0}
   debugsphere: {fileID: 0}
   sightDistance: 20
