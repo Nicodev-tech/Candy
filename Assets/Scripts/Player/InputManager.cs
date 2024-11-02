@@ -22,7 +22,7 @@ public class InputManager : MonoBehaviour
         gun = GetComponent<ProjectileGunTutorial>();
 
         //eventos(callback context)
-        onFoot.Jump.performed += ctx => motor.Jump();
+        //onFoot.Jump.performed += ctx => motor.Jump();
         onFoot.Crouch.performed += ctx => motor.Crouch();
         onFoot.Sprint.performed += ctx => motor.Sprint();
         onFoot.Sprint.canceled += ctx => motor.Sprint();

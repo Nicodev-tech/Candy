@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class PatrolState : BaseState
@@ -7,7 +8,14 @@ public class PatrolState : BaseState
     public int wayPointIndex;
     public float waitTime;
     public override void Enter()
-    {  
+    {
+        if (enemy.reversePath)
+        {
+            wayPointIndex = enemy.path.wayPoints.Count;
+        }
+        else {
+            wayPointIndex = -1;
+        }
     }
     public override void Exit()
     {
@@ -27,10 +35,8 @@ public class PatrolState : BaseState
             waitTime += Time.deltaTime;
             if (waitTime > enemy.timeBetweenPoints)
             {
-                if (wayPointIndex < enemy.path.wayPoints.Count - 1)
-                    wayPointIndex++;
-                else
-                    wayPointIndex = 0;
+                wayPointIndex = enemy.WalkPath(wayPointIndex);
+            
 
                 enemy.Agent.SetDestination(enemy.path.wayPoints[wayPointIndex].position);
                 waitTime = 0;

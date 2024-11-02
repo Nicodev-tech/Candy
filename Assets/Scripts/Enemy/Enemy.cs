@@ -23,8 +23,10 @@ public class Enemy : MonoBehaviour
 
     public GameObject Caramelo { get => caramelo; set => caramelo = value; }
     //para debugeo
-
+    [Header("Valores de Camino")]
     public Path path;
+    public bool reversePath;
+
     public GameObject debugsphere;
     [Header("Valores de vista")]
     public float sightDistance = 20f;
@@ -48,7 +50,7 @@ public class Enemy : MonoBehaviour
     {
         CanSeePlayer();
         currentState = stateMachine.activeState.ToString();
-        debugsphere.transform.position = LastKnowPos;
+        //debugsphere.transform.position = LastKnowPos;
     }
     public bool CanSeePlayer()
     {
@@ -67,7 +69,7 @@ public class Enemy : MonoBehaviour
                     {
                         if(hitInfo.transform.gameObject == player)
                         {
-                            Debug.DrawRay(ray.origin, ray.direction * sightDistance);
+                            //Debug.DrawRay(ray.origin, ray.direction * sightDistance);
                             return true;
                         }
                         
@@ -104,5 +106,25 @@ public class Enemy : MonoBehaviour
                 }
             }
         return false;
+    }
+    public int WalkPath(int WayPointIndex) 
+    {
+        if (reversePath)
+        {
+            WayPointIndex--;
+        }
+        else
+        {
+            WayPointIndex++;
+        }
+        if(WayPointIndex >= path.wayPoints.Count) 
+        {
+            WayPointIndex = 0;
+        }
+        if (WayPointIndex < 0)
+        {
+            WayPointIndex = path.wayPoints.Count;
+        }
+        return WayPointIndex;
     }
 }

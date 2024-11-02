@@ -36,7 +36,7 @@ public class AttackState : BaseState
             {
                 Debug.Log("DAME CARAMAAELELELO");
                 PlayerMovement n = enemy.Player.GetComponent<PlayerMovement>();
-                n.CanMove = false;
+                n.FinalMalo();
             }
         }
         else //pierde al jugador

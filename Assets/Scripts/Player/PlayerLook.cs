@@ -33,6 +33,10 @@ public class PlayerLook : MonoBehaviour
             //para que el jugador mire derecha e izquierda
             transform.Rotate(Vector3.up * (mouseX * Time.deltaTime) * xSen);
         }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
     public void LockMouse() 
     {

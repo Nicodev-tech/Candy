@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
     //la cantidad de unidades que baja el caracter
     public float crouchedHeight = 0.4f;
     [SerializeField] private AudioClip footStepSound;
+    [SerializeField] public GameObject Final;
+    private GameOver gameOver;
     float footSoundTimer = 1f;
     float diferenceHeight = 0f;
 
@@ -32,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         diferenceHeight = standingHeight - crouchedHeight;
+        gameOver = Final.GetComponent<GameOver>();
     }
 
     // Update is called once per frame
@@ -115,5 +118,17 @@ public class PlayerMovement : MonoBehaviour
         {
             speed = speed / 2;
         }
+    }
+    public void FinalMalo()
+    {
+        canMove = false;
+        Final.SetActive(true);
+        gameOver.FinalMalo();
+    }
+    public void FinalBueno()
+    {
+        canMove = false;
+        Final.SetActive(true);
+        gameOver.FinalBueno();
     }
 }
