@@ -26,7 +26,6 @@ public class InputManager : MonoBehaviour
         onFoot.Crouch.performed += ctx => motor.Crouch();
         onFoot.Sprint.performed += ctx => motor.Sprint();
         onFoot.Sprint.canceled += ctx => motor.Sprint();
-        onFoot.Menu.performed += ctx => look.LockMouse();
         onFoot.Shoot.performed += ctx => gun.Shoot();
     }
 

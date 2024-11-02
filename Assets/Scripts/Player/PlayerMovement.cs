@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     private CharacterController controller;
     public Camera cam;
+    private bool canMove = true;
     private Vector3 playerVelocity;
     public float speed = 5f;
     //posicion de la camara cuando el personaje esta parado
@@ -16,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     float footSoundTimer = 1f;
     float diferenceHeight = 0f;
 
-   
+    public bool CanMove { get => canMove; set => canMove = value; }
 
     private bool IsGrounded;
     public float gravity = -9.8f;
@@ -42,18 +43,16 @@ public class PlayerMovement : MonoBehaviour
             crouchTimer += Time.deltaTime;
             if (crouching)
             {
-                cam.transform.localPosition = new Vector3(0, Mathf.Lerp(cam.transform.localPosition.y, diferenceHeight, 0.02f),0);
+                controller.height = Mathf.Lerp(controller.height, 1, crouchTimer);
             }
             else 
             {
-                cam.transform.localPosition = new Vector3(0, Mathf.Lerp(cam.transform.localPosition.y, standingHeight, 0.02f), 0);
+                controller.height = Mathf.Lerp(controller.height, 2, crouchTimer);
             }
             //0.001f lo llamamos el valor aproximado pues cuando la posicion llega a 5.99f directamente tomamos como si hubiera llegado al destino
-            if (crouchTimer >= 1 && (cam.transform.localPosition.y >= standingHeight - 0.01f || cam.transform.localPosition.y >= diferenceHeight - 0.01f))
+            if (crouchTimer >= 1)
                
             {
-               float y = cam.transform.localPosition.y >= standingHeight - 0.01f ? standingHeight : diferenceHeight;
-               cam.transform.localPosition = new Vector3(0, y, 0);
                lerpCrouch = false;
                crouchTimer = 0f;
             }
@@ -64,33 +63,36 @@ public class PlayerMovement : MonoBehaviour
     //recive las inputs de inputmanager.cs y se las aplica al character controller
     public void ProcessMove(Vector2 input)
     {
-        Vector3 moveDirection = Vector3.zero;
-        moveDirection.x = input.x;
-        moveDirection.z = input.y;
-        controller.Move(transform.TransformDirection(moveDirection) * speed * Time.deltaTime);
-        playerVelocity.y += gravity * Time.deltaTime;
-        if (IsGrounded && playerVelocity.y < 0) 
+        if (canMove)
         {
-            playerVelocity.y = -2f;
-        }
-        controller.Move(playerVelocity * Time.deltaTime);
-        if (moveDirection.magnitude > 0f)
-        {
-            footSoundTimer += Time.deltaTime;
-            if (footSoundTimer >= 0.8f)
+            Vector3 moveDirection = Vector3.zero;
+            moveDirection.x = input.x;
+            moveDirection.z = input.y;
+            controller.Move(transform.TransformDirection(moveDirection) * speed * Time.deltaTime);
+            playerVelocity.y += gravity * Time.deltaTime;
+            if (IsGrounded && playerVelocity.y < 0)
             {
-                
-                SoundFXManager.Instance.PlaySoundFXClip(footStepSound, transform, 0.3f);
-                footSoundTimer = 0f;
+                playerVelocity.y = -2f;
             }
-            footSoundTimer = Mathf.Clamp(footSoundTimer, 0f, 0.8f);
+            controller.Move(playerVelocity * Time.deltaTime);
+            if (moveDirection.magnitude > 0f)
+            {
+                footSoundTimer += Time.deltaTime;
+                if (footSoundTimer >= 0.8f)
+                {
 
+                    SoundFXManager.Instance.PlaySoundFXClip(footStepSound, transform, 0.3f);
+                    footSoundTimer = 0f;
+                }
+                footSoundTimer = Mathf.Clamp(footSoundTimer, 0f, 0.8f);
+
+            }
         }
         //Debug.Log(playerVelocity.y);
     }
     public void Jump()  
     {
-        if (IsGrounded) {
+        if (IsGrounded && canMove) {
             
             playerVelocity.y = Mathf.Sqrt( jumpHeight * -3f * gravity);
             
