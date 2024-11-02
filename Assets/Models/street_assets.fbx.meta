@@ -7,8 +7,28 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Candy
+    second: {fileID: 2100000, guid: a215921d2124b17459294f2a353df46b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Car
     second: {fileID: 2100000, guid: 83be6d35aa441f44bb8acb5cb486615f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Car Lights
+    second: {fileID: 2100000, guid: be840c93357b9d946b03d3c57fbf2d80, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Car Wheel
+    second: {fileID: 2100000, guid: 67a98a71977c3974ea81771817e5bc37, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Center Wheel
+    second: {fileID: 2100000, guid: bc7560ab3956d594f9bc81e4bf1116a0, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -109,6 +129,21 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Wall
     second: {fileID: 2100000, guid: 42ad60cd40f2bfb4e8f8ed6e4aaff028, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Windows Base
+    second: {fileID: 2100000, guid: 0d810aa9fdfb05e4e87befb54d9c25c4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Windows Light
+    second: {fileID: 2100000, guid: fb2a0aeac002ffe4693c90e11d6f634a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Windshield
+    second: {fileID: 2100000, guid: 2778e6096942ff74a9304d8b1e9bc8bf, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
