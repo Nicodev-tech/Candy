@@ -123,7 +123,7 @@ public class Enemy : MonoBehaviour
         }
         if (WayPointIndex < 0)
         {
-            WayPointIndex = path.wayPoints.Count;
+            WayPointIndex = path.wayPoints.Count - 1;
         }
         return WayPointIndex;
     }

@@ -36,7 +36,8 @@ public class PatrolState : BaseState
             if (waitTime > enemy.timeBetweenPoints)
             {
                 wayPointIndex = enemy.WalkPath(wayPointIndex);
-            
+                
+
 
                 enemy.Agent.SetDestination(enemy.path.wayPoints[wayPointIndex].position);
                 waitTime = 0;
